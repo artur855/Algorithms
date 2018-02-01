@@ -1,11 +1,11 @@
 package DataStructures.Vetor;
 
 public class Vetor<T> implements IVetor<T>{
-    Object[] vetor;
+    T[] vetor;
     
     
     public void criarMaior(){
-        Object[] novo = new Object[2 * vetor.length];
+        T[] novo = (T[]) new Object[2 * vetor.length];
         for(int i =0 ; i < vetor.length ; i++){
             novo[i] = vetor[i];
             
@@ -14,11 +14,11 @@ public class Vetor<T> implements IVetor<T>{
     }
     
     public Vetor() {
-    	vetor = new Object[10];
+    	vetor = (T[]) new Object[10];
     }
     
     public Vetor(int tamanhoInicial) {
-    	vetor = new Object[tamanhoInicial];
+    	vetor = (T[]) new Object[tamanhoInicial];
     }
 
     @Override
@@ -40,7 +40,7 @@ public class Vetor<T> implements IVetor<T>{
 
     @Override
     public T remover(int posicao) {
-        T aux = (T) vetor[posicao];
+        T aux = vetor[posicao];
         vetor[posicao] = null;
         return aux;
     }
@@ -73,7 +73,7 @@ public class Vetor<T> implements IVetor<T>{
 
     @Override
     public void limpar() {
-        vetor = new Object[10];
+        vetor = (T[]) new Object[10];
     }
 
 	@Override
