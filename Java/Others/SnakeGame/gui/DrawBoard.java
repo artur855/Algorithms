@@ -1,14 +1,12 @@
-package SnakeGame.gui;
+package Others.SnakeGame.gui;
 
 import java.awt.Graphics;
 import java.awt.Color;
-
 import javax.swing.JPanel;
-
-import SnakeGame.game.SnakeGame;
-import SnakeGame.models.Apple;
-import SnakeGame.models.Point;
-import SnakeGame.models.Snake;
+import Others.SnakeGame.game.SnakeGame;
+import Others.SnakeGame.models.Apple;
+import Others.SnakeGame.models.Point;
+import Others.SnakeGame.models.Snake;
 
 public class DrawBoard extends JPanel implements Updatable {
 

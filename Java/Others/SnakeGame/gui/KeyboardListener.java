@@ -1,10 +1,9 @@
-package SnakeGame.gui;
+package Others.SnakeGame.gui;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
-import SnakeGame.Direction;
-import SnakeGame.models.Snake;
+import Others.SnakeGame.Direction;
+import Others.SnakeGame.models.Snake;
 
 public class KeyboardListener implements KeyListener {
 

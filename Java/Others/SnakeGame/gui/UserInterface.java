@@ -1,13 +1,11 @@
-package SnakeGame.gui;
+package Others.SnakeGame.gui;
 
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
-
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
-
-import SnakeGame.game.SnakeGame;
+import Others.SnakeGame.game.SnakeGame;
 
 public class UserInterface extends JFrame implements Runnable {
 

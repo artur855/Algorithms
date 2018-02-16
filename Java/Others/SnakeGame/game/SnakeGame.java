@@ -1,14 +1,14 @@
-package SnakeGame.game;
+package Others.SnakeGame.game;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 import javax.swing.Timer;
-import SnakeGame.Direction;
-import SnakeGame.gui.Updatable;
-import SnakeGame.models.Apple;
-import SnakeGame.models.Point;
-import SnakeGame.models.Snake;
+import Others.SnakeGame.Direction;
+import Others.SnakeGame.gui.Updatable;
+import Others.SnakeGame.models.Apple;
+import Others.SnakeGame.models.Point;
+import Others.SnakeGame.models.Snake;
 
 public class SnakeGame extends Timer implements ActionListener {
 

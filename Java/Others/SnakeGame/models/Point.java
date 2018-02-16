@@ -1,4 +1,4 @@
-package SnakeGame.models;
+package Others.SnakeGame.models;
 
 public class Point {
 
@@ -14,12 +14,12 @@ public class Point {
 	public boolean colides(Point point) {
 		return point.getX() == this.x && point.getY() == this.y;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "(" + this.x + "," + this. y + ")";
+		return "(" + this.x + "," + this.y + ")";
 	}
-	
+
 	public int getX() {
 		return x;
 	}

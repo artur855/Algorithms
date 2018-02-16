@@ -1,16 +1,15 @@
-package SnakeGame;
+package Others.SnakeGame;
 
 import javax.swing.JOptionPane;
-
-import SnakeGame.game.SnakeGame;
-import SnakeGame.gui.UserInterface;
+import Others.SnakeGame.game.SnakeGame;
+import Others.SnakeGame.gui.UserInterface;
 
 public class Main {
 
 	public static void main(String[] args) {
 		SnakeGame game = new SnakeGame(500, 500);
 		UserInterface ui = new UserInterface(game);
-		while (ui.getUpdatable() == null){
+		while (ui.getUpdatable() == null) {
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
@@ -19,7 +18,7 @@ public class Main {
 		}
 		game.setUpdatable(ui.getUpdatable());
 		ui.run();
-		
+
 	}
 
 }
