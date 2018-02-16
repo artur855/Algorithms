@@ -3,14 +3,15 @@ package Others.SnakeGame.gui;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import Others.SnakeGame.Direction;
-import Others.SnakeGame.models.Snake;
+import Others.SnakeGame.GameState;
+import Others.SnakeGame.game.SnakeGame;
 
 public class KeyboardListener implements KeyListener {
 
-	private Snake snake;
+	private SnakeGame game;
 
-	public KeyboardListener(Snake snake) {
-		this.snake = snake;
+	public KeyboardListener(SnakeGame game) {
+		this.game = game;
 	}
 
 	@Override
@@ -23,26 +24,33 @@ public class KeyboardListener implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_DOWN:
-			if(!this.snake.getDirection().name().equalsIgnoreCase("UP")) {				
-				this.snake.setDirection(Direction.DOWN);
+			if(!this.game.getSnake().getDirection().name().equalsIgnoreCase("UP")) {				
+				this.game.getSnake().setDirection(Direction.DOWN);
 			}
 			break;
 		case KeyEvent.VK_UP:			
-			if(!this.snake.getDirection().name().equalsIgnoreCase("DOWN")) {				
-				this.snake.setDirection(Direction.UP);
+			if(!this.game.getSnake().getDirection().name().equalsIgnoreCase("DOWN")) {				
+				this.game.getSnake().setDirection(Direction.UP);
 			}
 			break;
 		case KeyEvent.VK_RIGHT:			
-			if(!this.snake.getDirection().name().equalsIgnoreCase("LEFT")) {				
-				this.snake.setDirection(Direction.RIGHT);
+			if(!this.game.getSnake().getDirection().name().equalsIgnoreCase("LEFT")) {				
+				this.game.getSnake().setDirection(Direction.RIGHT);
 			}
 			break;
 		case KeyEvent.VK_LEFT:			
-			if(!this.snake.getDirection().name().equalsIgnoreCase("RIGHT")) {				
-				this.snake.setDirection(Direction.LEFT);
+			if(!this.game.getSnake().getDirection().name().equalsIgnoreCase("RIGHT")) {				
+				this.game.getSnake().setDirection(Direction.LEFT);
 			}
 			break;
+		case KeyEvent.VK_P:
+			if (this.game.getGameState().name().equals("PLAY")) {
+				this.game.setGameState(GameState.PAUSE);
+			} else if (this.game.getGameState().name().equals("PAUSE")) {
+				this.game.setGameState(GameState.PLAY);
+			}
 		}
+		
 	}
 
 	@Override

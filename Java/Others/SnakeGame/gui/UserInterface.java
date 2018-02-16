@@ -15,12 +15,11 @@ public class UserInterface extends JFrame implements Runnable {
 
 	public UserInterface(SnakeGame snakeGame) {
 		this.snakeGame = snakeGame;
-		this.drawBoard = new DrawBoard(snakeGame,10);
+		this.drawBoard = new DrawBoard(snakeGame, 10);
 	}
 
 	public void createComponents(Container container) {
 		container.add(drawBoard);
-		container.addKeyListener(new KeyboardListener(snakeGame.getSnake()));
 		container.setPreferredSize(new Dimension(this.snakeGame.getWidth(), this.snakeGame.getHeight()));
 	}
 
@@ -32,12 +31,29 @@ public class UserInterface extends JFrame implements Runnable {
 	public void run() {
 		super.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		this.createComponents(super.getContentPane());
-		super.pack();
-		this.addKeyListener(new KeyboardListener(snakeGame.getSnake()));
 		super.setTitle("Snake Game");
+		super.addKeyListener(new KeyboardListener(snakeGame));
+		super.pack();
 		super.setBackground(Color.WHITE);
 		super.setVisible(true);
-		snakeGame.start();
+		while (!snakeGame.getGameState().name().equals("OVER")) {
+			switch (snakeGame.getGameState()) {
+			case PLAY:
+				if (!snakeGame.isRunning()) {
+					snakeGame.start();
+				}
+				break;
+			case PAUSE:
+				if (snakeGame.isRunning()) {
+					snakeGame.stop();
+				}
+				if (!snakeGame.isRunning()) {
+					snakeGame.restart();
+				}
+				break;
+			default:
+			}
+		}
+		snakeGame.stop();
 	}
-
 }

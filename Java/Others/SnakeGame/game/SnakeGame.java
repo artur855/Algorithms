@@ -3,10 +3,9 @@ package Others.SnakeGame.game;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
-
-import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import Others.SnakeGame.Direction;
+import Others.SnakeGame.GameState;
 import Others.SnakeGame.gui.Updatable;
 import Others.SnakeGame.models.Apple;
 import Others.SnakeGame.models.Point;
@@ -17,6 +16,7 @@ public class SnakeGame extends Timer implements ActionListener {
 	private static final long serialVersionUID = 6162905588365520672L;
 	private Snake snake;
 	private Apple apple;
+	private GameState gameState;
 	private boolean ok;
 	private Updatable updatable;
 	private int width;
@@ -29,6 +29,7 @@ public class SnakeGame extends Timer implements ActionListener {
 		this.width = width;
 		random = new Random();
 		this.height = height;
+		this.gameState = GameState.PLAY;
 		this.snake = new Snake(this.width / 2, this.height / 2, Direction.DOWN);
 		this.apple = createApple();
 		ok = true;
@@ -49,7 +50,7 @@ public class SnakeGame extends Timer implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (!this.ok) {
 			this.stop();
-			JOptionPane.showMessageDialog(null, "Game Over");
+			this.gameState = GameState.OVER;
 			return;
 		}
 		this.snake.move();
@@ -64,7 +65,7 @@ public class SnakeGame extends Timer implements ActionListener {
 			this.ok = false;
 		}
 		this.updatable.update();
-		super.setDelay(50/this.snake.getLength());
+		super.setDelay(50 / this.snake.getLength());
 	}
 
 	public boolean hitWall() {
@@ -75,7 +76,7 @@ public class SnakeGame extends Timer implements ActionListener {
 		}
 		return false;
 	}
-
+	
 	public Snake getSnake() {
 		return snake;
 	}
@@ -112,4 +113,12 @@ public class SnakeGame extends Timer implements ActionListener {
 		this.updatable = updatable;
 	}
 
+	public GameState getGameState() {
+		return gameState;
+	}
+
+	public void setGameState(GameState gameState) {
+		this.gameState = gameState;
+	}
+	
 }

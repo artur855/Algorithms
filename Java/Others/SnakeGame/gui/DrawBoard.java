@@ -30,7 +30,6 @@ public class DrawBoard extends JPanel implements Updatable {
 		for (Point p : snake.getPoints()) {
 			g.setColor(Color.BLACK);
 			g.fillRect(p.getX(), p.getY(), pieceLenght, pieceLenght);
-			
 		}
 		g.setColor(Color.RED);
 		g.fillRect(apple.getX(), apple.getY(), pieceLenght, pieceLenght);
