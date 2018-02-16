@@ -15,7 +15,7 @@ public class UserInterface extends JFrame implements Runnable {
 
 	public UserInterface(SnakeGame snakeGame) {
 		this.snakeGame = snakeGame;
-		this.drawBoard = new DrawBoard(snakeGame,20);
+		this.drawBoard = new DrawBoard(snakeGame,10);
 	}
 
 	public void createComponents(Container container) {

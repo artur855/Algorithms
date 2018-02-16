@@ -22,6 +22,8 @@ public class DrawBoard extends JPanel implements Updatable {
 
 	@Override
 	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		super.repaint();
 		Snake snake = game.getSnake();
 		Apple apple = game.getApple();
 		
@@ -31,7 +33,7 @@ public class DrawBoard extends JPanel implements Updatable {
 			
 		}
 		g.setColor(Color.RED);
-		g.fillOval(apple.getX(), apple.getY(), pieceLenght, pieceLenght);
+		g.fillRect(apple.getX(), apple.getY(), pieceLenght, pieceLenght);
 	}
 
 	@Override

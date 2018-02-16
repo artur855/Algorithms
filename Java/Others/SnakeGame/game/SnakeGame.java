@@ -64,7 +64,7 @@ public class SnakeGame extends Timer implements ActionListener {
 			this.ok = false;
 		}
 		this.updatable.update();
-		setDelay(100 / this.snake.getLength());
+		super.setDelay(50/this.snake.getLength());
 	}
 
 	public boolean hitWall() {

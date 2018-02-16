@@ -18,6 +18,7 @@ public class Main {
 		}
 		game.setUpdatable(ui.getUpdatable());
 		ui.run();
+		
 
 	}
 

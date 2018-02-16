@@ -23,28 +23,24 @@ public class KeyboardListener implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_DOWN:
-			if(this.snake.getDirection().name().equals("UP")) {				
-				this.snake.setDirection(Direction.UP);
-			}
-			this.snake.setDirection(Direction.DOWN);
-			break;
-		case KeyEvent.VK_UP:			
-			if(this.snake.getDirection().name().equals("DOWN")) {				
+			if(!this.snake.getDirection().name().equalsIgnoreCase("UP")) {				
 				this.snake.setDirection(Direction.DOWN);
 			}
-			this.snake.setDirection(Direction.UP);
+			break;
+		case KeyEvent.VK_UP:			
+			if(!this.snake.getDirection().name().equalsIgnoreCase("DOWN")) {				
+				this.snake.setDirection(Direction.UP);
+			}
 			break;
 		case KeyEvent.VK_RIGHT:			
-			if(this.snake.getDirection().name().equals("LEFT")) {				
-				this.snake.setDirection(Direction.LEFT);
-			}
-			this.snake.setDirection(Direction.RIGHT);
-			break;
-		case KeyEvent.VK_LEFT:			
-			if(this.snake.getDirection().name().equals("RIGHT")) {				
+			if(!this.snake.getDirection().name().equalsIgnoreCase("LEFT")) {				
 				this.snake.setDirection(Direction.RIGHT);
 			}
-			this.snake.setDirection(Direction.LEFT);
+			break;
+		case KeyEvent.VK_LEFT:			
+			if(!this.snake.getDirection().name().equalsIgnoreCase("RIGHT")) {				
+				this.snake.setDirection(Direction.LEFT);
+			}
 			break;
 		}
 	}
