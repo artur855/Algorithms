@@ -33,6 +33,7 @@ public class UserInterface extends JFrame implements Runnable {
 		super.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		this.createComponents(super.getContentPane());
 		super.pack();
+		this.addKeyListener(new KeyboardListener(snakeGame.getSnake()));
 		super.setTitle("Snake Game");
 		super.setBackground(Color.WHITE);
 		super.setVisible(true);

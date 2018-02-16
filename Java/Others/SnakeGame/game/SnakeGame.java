@@ -3,6 +3,8 @@ package Others.SnakeGame.game;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
+
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import Others.SnakeGame.Direction;
 import Others.SnakeGame.gui.Updatable;
@@ -46,6 +48,8 @@ public class SnakeGame extends Timer implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (!this.ok) {
+			this.stop();
+			JOptionPane.showMessageDialog(null, "Game Over");
 			return;
 		}
 		this.snake.move();
@@ -60,7 +64,7 @@ public class SnakeGame extends Timer implements ActionListener {
 			this.ok = false;
 		}
 		this.updatable.update();
-		setDelay(1000 / this.snake.getLength());
+		setDelay(100 / this.snake.getLength());
 	}
 
 	public boolean hitWall() {

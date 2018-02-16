@@ -17,20 +17,21 @@ public class DrawBoard extends JPanel implements Updatable {
 	public DrawBoard(SnakeGame game, int pieceLenght) {
 		this.pieceLenght = pieceLenght;
 		this.game = game;
+		super.setBackground(Color.WHITE);
 	}
 
 	@Override
 	protected void paintComponent(Graphics g) {
 		Snake snake = game.getSnake();
 		Apple apple = game.getApple();
+		
 		for (Point p : snake.getPoints()) {
 			g.setColor(Color.BLACK);
-			g.drawString("VAI SE FUDER", 200, 200);
-			g.fill3DRect(p.getX(), p.getY(), pieceLenght, pieceLenght, true);
+			g.fillRect(p.getX(), p.getY(), pieceLenght, pieceLenght);
+			
 		}
 		g.setColor(Color.RED);
 		g.fillOval(apple.getX(), apple.getY(), pieceLenght, pieceLenght);
-		super.paintComponent(g);
 	}
 
 	@Override
