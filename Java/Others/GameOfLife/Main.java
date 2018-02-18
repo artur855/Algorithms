@@ -7,7 +7,8 @@ import Others.GameOfLife.gui.UserInterface;
 
 public class Main {
 	public static void main(String[] args) {
-		UserInterface ui = new UserInterface(new PersonalBoard(25,25));
+		UserInterface ui = new UserInterface(new PersonalBoard(50,50));
+		
 		SwingUtilities.invokeLater(ui);
 	}
 }
