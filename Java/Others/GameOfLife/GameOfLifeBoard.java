@@ -12,8 +12,25 @@ public abstract class GameOfLifeBoard {
 		board = new boolean[width][height];
 	}
 
-	public void playTurn() {
+	@Override
+	public String toString() {
+		String str = "";
 
+		for (boolean[] line : this.board) {
+			for (boolean cell : line) {
+				if(cell) {
+					str += " 1";
+				} else {
+					str += " 0";
+				}
+			}
+			str += "\n";
+		}
+		return str.toString();
+	}
+
+	public void setBoard(boolean[][] board) {
+		this.board = board;
 	}
 
 	public boolean[][] getBoard() {
@@ -27,6 +44,8 @@ public abstract class GameOfLifeBoard {
 	public int getHeight() {
 		return height;
 	}
+
+	public abstract void playTurn();
 
 	public abstract void turnToLiving(int x, int y);
 
