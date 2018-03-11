@@ -111,16 +111,17 @@ class Puzzle:
                 print('Invalid movement')
 
         elif len(adj) == 4:
-            print('These are the possible movements\n{:>8} | {:^8} | {:^8} | {:<8}\n{:>8} | {:^8} | {:^8} | {:<8}'.format(
-                self.board[adj[0]],
-                self.board[adj[1]],
-                self.board[adj[2]],
-                self.board[adj[3]],
-                possible[0],
-                possible[1],
-                possible[2],
-                possible[3]
-            )
+            print(
+                'These are the possible movements\n{:>8} | {:^8} | {:^8} | {:<8}\n{:>8} | {:^8} | {:^8} | {:<8}'.format(
+                    self.board[adj[0]],
+                    self.board[adj[1]],
+                    self.board[adj[2]],
+                    self.board[adj[3]],
+                    possible[0],
+                    possible[1],
+                    possible[2],
+                    possible[3]
+                )
             )
             move = input()
             if move.upper() in possible:
@@ -164,3 +165,7 @@ class Puzzle:
 
     def set_difficult(self):
         pass
+
+
+p = Puzzle()
+p.start_game()
