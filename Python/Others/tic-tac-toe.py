@@ -54,17 +54,25 @@ while True:
         row = int(input())
         print('Insert column number')
         col = int(input())
-        board[row - 1][col - 1] = p1
+        if board[row - 1][col - 1] != '-':
+            print("You can't mark this position")
+            turn -= 1
+        else:
+            board[row - 1][col - 1] = p1
     else:
         print('Second player turn')
         print('Insert row number')
         row = int(input())
         print('Insert column number')
         col = int(input())
-        board[row - 1][col - 1] = p2
+        if board[row - 1][col - 1] != '-':
+            print("You can't mark this position")
+            turn -= 1
+        else:
+            board[row - 1][col - 1] = p2
     result = checar()
-    if(result[0]):
-        if(result[1] == p1):
+    if result[0]:
+        if result[1] == p1:
             drawTab()
             print('Congratulations player 1!\nYou Win!!!')
             break
