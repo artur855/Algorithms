@@ -25,4 +25,18 @@ public class ChessBoard {
 		return this.board[x][y];
 	}
 
+	@Override
+	public String toString() {
+		String result = "";
+		for (int i = 0; i < 8; i++) {
+			result += "|";
+			for (int j = 0; j < 8; j++) {
+				result += (board[i][j].getPiece() == null) ? "Square|"
+						: board[i][j].getPiece().getClass().getSimpleName() + "|";
+			}
+			result += "\n---------------------------------------------------------\n";
+		}
+		return result;
+	}
+
 }

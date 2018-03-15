@@ -10,6 +10,7 @@ public abstract class Piece {
 	public Piece(Player player, Square square) {
 		this.player = player;
 		this.square = square;
+		square.setPiece(this);
 	}
 
 	@Override
@@ -33,10 +34,13 @@ public abstract class Piece {
 		this.square = square;
 	}
 
-	public abstract List<Square> possibleMoves();
+	public abstract List<Square> getPossibleMoves();
+
+	public abstract void move(Square newSquare);
 
 	public boolean isValidMovement(Square square) {
-		if (square != null && ((square.getPiece() == null) || (square.getPiece().player != this.player))) {
+		if (square != null && !square.equals(this.square)
+				&& ((square.getPiece() == null) || (square.getPiece().player != this.player))) {
 			return true;
 		}
 		return false;

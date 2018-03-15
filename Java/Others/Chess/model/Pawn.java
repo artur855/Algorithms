@@ -6,41 +6,68 @@ import java.util.List;
 
 public class Pawn extends Piece {
 
-	private boolean hasMoved;
 	private int direction;
+	private boolean canEnPassant;
+
 	public Pawn(Player player, Square square) {
 		super(player, square);
-		this.hasMoved = false;
-		this.direction = player.getColor()== Color.WHITE ? 1 : -1;
+		this.direction = player.getColor() == Color.WHITE ? 1 : -1;
 	}
 
 	@Override
-	public List<Square> possibleMoves() {
+	public List<Square> getPossibleMoves() {
 		List<Square> possibleMoves = new ArrayList<>();
-		//Top Square
+		// Top Square
 		Square possibleLocation = square.getNeighbour(0, direction);
 		if (super.isValidMovement(possibleLocation)) {
 			possibleMoves.add(possibleLocation);
 		}
-		//First Movement
-		if (!hasMoved) {
-			hasMoved = true;
-			possibleLocation = square.getNeighbour(0, 2*direction);
+		// First Movement
+		if (inInitialPosition()) {
+			possibleLocation = square.getNeighbour(0, 2 * direction);
 			if (super.isValidMovement(possibleLocation)) {
 				possibleMoves.add(possibleLocation);
 			}
 		}
-		//Top-Right Square
-		possibleLocation = square.getNeighbour(1, direction);
+		// Top-Right Square
 		if (this.isValidMovement(possibleLocation)) {
+			possibleLocation = square.getNeighbour(1, direction);
 			possibleMoves.add(possibleLocation);
 		}
-		//Top-Left Square
-		possibleLocation = square.getNeighbour(-1, direction);
+		// Top-Left Square
 		if (this.isValidMovement(possibleLocation)) {
+			possibleLocation = square.getNeighbour(-1, direction);
 			possibleMoves.add(possibleLocation);
+		}
+
+		if (this.canEnPassant()) {
+			// En Passant Left
+			possibleLocation = square.getNeighbour(-1, direction);
+			if (isValidMovement(possibleLocation) && possibleLocation.getPiece() instanceof Pawn) {
+				possibleMoves.add(possibleLocation);
+			}
+			// En Passant Rigth
+			possibleLocation = square.getNeighbour(1, direction);
+			if (isValidMovement(possibleLocation) && possibleLocation.getPiece() instanceof Pawn) {
+				possibleMoves.add(possibleLocation);
+			}
 		}
 		return possibleMoves;
+	}
+
+	public boolean inInitialPosition() {
+		if ((this.direction == 1 && this.square.getY() == 1) || (this.direction == -1 && this.square.getY() == 6)) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean canEnPassant() {
+		return this.canEnPassant;
+	}
+
+	public void setCanEnPassant(boolean canEnPassant) {
+		this.canEnPassant = canEnPassant;
 	}
 
 	@Override
@@ -49,6 +76,10 @@ public class Pawn extends Piece {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public void move(Square newSquare) {
 	}
 
 }
