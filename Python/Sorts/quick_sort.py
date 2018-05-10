@@ -1,11 +1,3 @@
-
-def calculateTime(func, array):
-    import time
-    start = time.time()
-    func(array)
-    return 'Time spent for selection sort: {:.3f}s'.format(time.time() - start)
-
-
 def quicksort(array, start, end):
     if start < end:
         pivot = partition(array, start, end)

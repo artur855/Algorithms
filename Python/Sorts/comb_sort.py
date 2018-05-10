@@ -1,11 +1,3 @@
-
-def calculateTime(func, array):
-    import time
-    start = time.time()
-    func(array)
-    print('Time spent for comb sort: {:.3f}s'.format(time.time() - start))
-
-
 def comb_sort(array):
     gap = int(len(array) / 1.3)
     i = 0

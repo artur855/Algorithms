@@ -1,11 +1,3 @@
-
-def calculateTime(func, array):
-    import time
-    start = time.time()
-    func(array)
-    print('Time spent for insertion sort: {:.3f}s'.format(time.time() - start))
-
-
 def insertion_sort(array):
     for i in range(len(array)):
         x = array[i]
