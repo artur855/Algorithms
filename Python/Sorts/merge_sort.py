@@ -1,3 +1,11 @@
+def merge_sort(array, start, end):
+    if start < end:
+        middle = (start + end - 1) // 2
+        merge_sort(array, start, middle)
+        merge_sort(array, middle + 1, end)
+        merge(array, start, middle, end)
+
+
 def merge(array, start, middle, end):
     first_size = middle - start + 1
     second_size = end - middle
@@ -28,22 +36,3 @@ def merge(array, start, middle, end):
         array[k] = second_array[j]
         j += 1
         k += 1
-
-
-def mergeSort(array, start, end):
-    if start < end:
-        middle = (start + end - 1) // 2
-        mergeSort(array, start, middle)
-        mergeSort(array, middle + 1, end)
-        merge(array, start, middle, end)
-
-
-from timeit import timeit
-import random
-import time
-s = list(range(50))
-random.shuffle(s)
-t0 = time.time()
-mergeSort(s, 0, len(s) - 1)
-print('Time = {}s'.format(time.time() - t0))
-print(s)

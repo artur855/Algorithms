@@ -1,5 +1,6 @@
 def insertion_sort(array):
     for i in range(len(array)):
+        print(array)
         x = array[i]
         j = i - 1
         while j >= 0 and array[j] > x:
