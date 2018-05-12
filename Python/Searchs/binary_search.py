@@ -1,11 +1,3 @@
-
-def calculateTime(func, value, array):
-    import time
-    start = time.time()
-    func(value, array)
-    return 'Time spent for binary search: {:.3f}s'.format(time.time() - start)
-
-
 def binary_search(value, array):
     start_interval = 0
     end_interval = len(array) - 1
@@ -20,3 +12,5 @@ def binary_search(value, array):
             start_interval = half + 1
 
     return None
+
+
